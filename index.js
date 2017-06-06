@@ -108,7 +108,7 @@ app.get('/i/gen.png', function(req, res) {
 
 app.get('/', function(req, res) {
 	res.send("/i/gen.png?text=~~~&size=~~~");
-}
+});
 
 var server = app.listen(process.env.PORT || 3000, function () {
 	var host = server.address().address;
