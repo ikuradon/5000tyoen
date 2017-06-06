@@ -17,10 +17,10 @@ function draw(text, size) {
 	var posx = 70;
 	var posy = 100;
 	var height = 130;
-	
+
 	var canvas = new Canvas(0, 0);
 	var context = canvas.getContext('2d');
-	
+
 	context.font = '100px "mplus-1p-black"';
 	context.lineJoin = 'round';
 
@@ -30,10 +30,7 @@ function draw(text, size) {
 	canvas.width = width;
 
 	context.setTransform(1,0,-0.4,1,0,0);
-	
-	console.log("Text: " + text);
-	console.log("width: " + width);
-	
+
 	//銀色
 	for (var i = 0; i < 10; i++) {
 		{
@@ -44,12 +41,14 @@ function draw(text, size) {
 			context.strokeText(text, posx - 3 + i, posy + 2);
 		}
 	}
-	  //黒色
+
+	//黒色
 	{
 		context.strokeStyle = "#000000";
 		context.lineWidth = 22;
 		context.strokeText(text, posx, posy);
 	}
+
 	//金色
 	{
 		var grad = context.createLinearGradient(0, 20, 0, 100);
@@ -61,7 +60,6 @@ function draw(text, size) {
 		context.lineWidth = 19;
 		context.strokeText(text, posx, posy);
 	}
-
 	//白
 	{
 		context.lineWidth = 6;
@@ -101,14 +99,18 @@ function draw(text, size) {
 	return _res;
 }
 
-app.get('/', function(req, res) {
+app.get('/i/gen.png', function(req, res) {
 	var text = req.query.text;
 	var size = req.query.size;
 	res.setHeader("Context-Type", "image/png");
 	draw(text, size).pngStream().pipe(res);
 });
 
-var server = app.listen(3000, function () {
+app.get('/', function(req, res) {
+	res.send("/i/gen.png?text=~~~&size=~~~");
+}
+
+var server = app.listen(process.env.PORT || 3000, function () {
 	var host = server.address().address;
 	var port = server.address().port;
 	console.log('5000兆円 app listening at http://%s:%s', host, port);

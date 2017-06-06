@@ -2,5 +2,9 @@
   "dependencies": {
     "canvas": "https://github.com/Automattic/node-canvas#v2.0.0-alpha.2",
     "express": "^4.15.3"
+  },
+  "engines": {
+    "node": "v6.10.X",
+    "npm": "3.10.X"
   }
 }
