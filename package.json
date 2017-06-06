@@ -4,7 +4,7 @@
     "express": "^4.15.3"
   },
   "engines": {
-    "node": "v6.10.X",
-    "npm": "3.10.X"
+    "node": "v7.0.X",
+    "npm": "4.0.X"
   }
 }
